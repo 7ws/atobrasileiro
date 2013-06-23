@@ -17,6 +17,7 @@ CONSTANCE_CONFIG = {
     # Site info
     'SITE_NAME': (u'Site Name', 'Site name'),
     'SITE_URL': (u'http://siteurl.com', 'Main site address'),
+    'COPYRIGHT_NOTICE': ('', 'Copyright notice'),
 
     # Email settings
     'EMAIL_HOST': ('smtp.gmail.com', 'SMTP connection host name'),

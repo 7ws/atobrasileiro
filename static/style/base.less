@@ -1,0 +1,95 @@
+@import url(http://fonts.googleapis.com/css?family=Telex);
+@import url(http://fonts.googleapis.com/css?family=Trade+Winds);
+@import 'defs';
+
+
+* {
+	border: none;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+}
+
+html {
+	background: @COLOR7;
+	font: 12px "Lato", sans-serif;
+}
+
+a {
+	color: @COLOR4;
+	text-decoration: none;
+
+	img { border: none }
+}
+
+button { #button > .creamy }
+a { text-decoration: none }
+a:hover { text-decoration: underline }
+a:focus,
+button:focus { text-decoration: underline !important }  // visual help
+::-moz-focus-inner { border: none; text-decoration: none }
+
+
+#header {
+	border: 2px dashed @COLOR7;
+	border-left: none;
+	border-right: none;
+	background: @COLOR4;
+	margin: 2em 0 4em 0;
+
+	header {
+		margin: 0 auto;
+		width: @MAIN_WIDTH;
+	}
+
+	#logo {
+		font: 6em 'Trade Winds';
+		padding: 0.25em 0;
+		position: relative;
+
+		a { color: @COLOR1 }
+
+		&:after {
+			color: @COLOR7;
+			content: '\2605';
+			font-size: 3.8em;
+			margin-top: -0.46em;
+			position: absolute;
+			right: 0;
+			transform: rotate(15deg);
+		}
+	}
+}
+
+#middle { #layout > .double;
+	margin: 0 auto;
+	width: @MAIN_WIDTH;
+}
+
+#footer {
+	footer {
+		background: @COLOR3;
+		box-sizing: border-box;
+		color: @COLOR1;
+		margin: 0 auto;
+		padding: 1em @GRID_GAP;
+		width: @MAIN_WIDTH;
+	}
+
+	#copyright { text-align: right }
+}
+
+
+// Sticky footer
+html {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	position: relative;
+}
+#footer {
+	bottom: 0;
+	height: 0;
+	position: absolute;
+	width: 100%;
+}

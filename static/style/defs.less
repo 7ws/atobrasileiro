@@ -1,0 +1,232 @@
+/*
+This library should only contain the site's specific style constant
+definitions like colors, sizes, etc.
+
+This file should NEVER be included in any markup. Instead, other LESS
+files can import this and use its contents.
+*/
+
+// Base colors
+@COLOR1: #ffffff;  // white
+@COLOR2: #666666;  // dark grey
+@COLOR3: #1e7ab9;  // dark blue
+@COLOR4: #2ba1d1;  // light blue
+@COLOR5: #8c3f8e;  // purple
+@COLOR6: #ffcc00;  // yellow
+@COLOR9: #ff3300;  // red
+@COLOR7: #f4f4f4;  // light grey
+@COLOR8: #dddddd;  // medium grey
+
+// Common sizes
+@MAIN_WIDTH: 940px;
+@COLUMNS: 12;
+@GRID_GAP: 20px;
+@GRID_COLUMN: (@MAIN_WIDTH - @GRID_GAP * (@COLUMNS - 1)) / @COLUMNS;
+@1COLUMN: @GRID_COLUMN;
+@2COLUMNS: @GRID_COLUMN * 2 + @GRID_GAP;
+@3COLUMNS: @GRID_COLUMN * 3 + @GRID_GAP * 2;
+@4COLUMNS: @GRID_COLUMN * 4 + @GRID_GAP * 3;
+@5COLUMNS: @GRID_COLUMN * 5 + @GRID_GAP * 4;
+@6COLUMNS: @GRID_COLUMN * 6 + @GRID_GAP * 5;
+@7COLUMNS: @GRID_COLUMN * 7 + @GRID_GAP * 6;
+@8COLUMNS: @GRID_COLUMN * 8 + @GRID_GAP * 7;
+@9COLUMNS: @GRID_COLUMN * 9 + @GRID_GAP * 8;
+@10COLUMNS: @GRID_COLUMN * 10 + @GRID_GAP * 9;
+@11COLUMNS: @GRID_COLUMN * 11 + @GRID_GAP * 10;
+@12COLUMNS: @GRID_COLUMN * 12 + @GRID_GAP * 11;
+@SIDEBAR_WIDTH: @3COLUMNS;
+@CONTENT_WIDTH: @9COLUMNS;
+
+// Extra
+@HEADER_HEIGHT: 100px;
+
+
+// Mixins
+
+#layout {
+	.double {
+		> * {
+			box-sizing: border-box;
+			display: inline-block;
+			margin-right: -0.2em;
+		}
+
+		#sidebar { width: @SIDEBAR_WIDTH }
+
+		#content {
+			vertical-align: top;
+			width: @CONTENT_WIDTH + @GRID_GAP;
+		}
+	}
+}
+
+.inline_nav {
+// general inline lists with links
+	li {
+		display: inline;
+		> a,
+		> span { display: inline-block }
+	}
+}
+
+.drop_arrow_inline {
+	&:after {
+		content: "›";
+		display: inline-block;
+		font-family: serif;
+		font-size: 1.25em;
+		line-height: 1em;
+		margin-left: 0.5em;
+		transform: rotate(90deg);
+		vertical-align: middle;
+	}
+}
+
+#balloon {
+	._common {
+		position: absolute;
+		z-index: 999;
+
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 0;
+			border-style: solid;
+			border-width: 0;
+		}
+	}
+
+	.top (@size: 10px, @color: #aaa, @position: 20%) {
+		#balloon > ._common;
+
+		&:after {
+			top: -@size;
+			right: @position - (@size / 2);
+			border-width: 0 @size @size;
+			border-color: @color transparent;
+		}
+	}
+}
+
+.box_section {
+	background: @COLOR7;
+	padding: @GRID_GAP;
+}
+
+#button {
+// common library for button styles
+	._common (@color, @width, @fix_label, @icon) {
+		background-color: @color;
+		border-radius: 3px;
+		box-sizing: border-box;
+		color: @COLOR1;
+		cursor: pointer;
+		display: inline-block;
+		font-family: "Lato";
+		font-size: inherit;
+		font-weight: bold;
+		text-align: center;
+		text-transform: uppercase;
+		transition: 0.3s;
+		width: @width;
+
+		&:focus, &:hover { background-color: softlight(@color, #ccc) }
+
+		// visual help for tab navigation
+		&:hover { text-decoration: none !important }
+		&:focus { text-decoration: underline !important }
+
+		&.disabled { background-color: greyscale(@color) }
+	}
+	._common (@color, @width, @fix_label, @icon) when (isnumber(@width)) {
+		// supress paddings when width is defined
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		text-align: center;
+	}
+	._common (@color, @width, @fix_label, @icon) when (@fix_label) and (luma(@color) >= 60%) {
+		// if button is too bright and adjustment is allowed
+		&:hover, &:focus { text-shadow: 0 0 8px fadeout(#000, 60%) }
+	}
+	._common (@color, @width, @fix_label, @icon) when (isstring(@icon)) {
+		// icon support (16x16 mandatory)
+		@width: 40px;
+		@height: 24px;
+
+		position: relative;
+		padding-right: @width !important;
+
+		&:after {
+			background: url(@icon) no-repeat center;
+			border-left: 2px solid fadeout(@COLOR1, 60%);
+			content: "";
+			display: inline-block;
+			height: @height;
+			margin-left: 8px;
+			margin-top: -(@height / 2);
+			position: absolute;
+			right: 0;
+			top: 50%;
+			vertical-align: middle;
+			width: @width;
+		}
+	}
+
+	.flat (@color: @COLOR3, @width: auto, @icon: none) {
+		#button > ._common (@color, @width, true, @icon);
+		padding: 1em;
+	}
+
+	.creamy (@color: @COLOR4, @width: auto, @icon: none) {
+		#button > ._common (@color, @width, false, @icon);
+
+		border: 1px solid @color;
+		background-image: linear-gradient(fadeout(#000, 100%), fadeout(#000, 80%));
+		padding: 1em;
+		text-shadow: 0 -1px 0 fadeout(#000, 80%);
+	}
+}
+
+#form {
+// namespace for form widgets
+	.input {
+		background: #fff;
+		border: 1px solid @COLOR8;
+		border-radius: 3px;
+		box-sizing: border-box;
+		color: @COLOR2;
+		font-family: "Museo";
+		min-height: 3em;
+		padding: @GRID_GAP / 2;
+		transition: box-shadow 0.5s;
+
+		&:focus {
+			border: 1px solid @COLOR4;
+			box-shadow: 0 0 8px @COLOR4;
+		}
+
+		&.error {
+			border-color: @COLOR9;
+			&:focus { box-shadow: 0 0 8px @COLOR9 }
+		}
+	}
+
+	.button { #button > .flat (@COLOR4) }
+
+	.info_balloon (@color: @COLOR3) { #balloon > .top (@color: @color);
+		background-color: @color;
+		border-radius: 3px;
+		color: @COLOR1;
+		margin-top: 3px;
+		padding: @GRID_GAP / 2;
+		position: absolute;
+		right: 0;
+	}
+
+	.error_balloon {
+		#form > .info_balloon (@COLOR9);
+
+		background-color: @COLOR9;
+	}
+}

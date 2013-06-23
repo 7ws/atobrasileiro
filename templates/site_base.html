@@ -1,0 +1,54 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>{{ config.SITE_NAME }}</title>
+
+	{% block css %}
+	<link rel="stylesheet/less" href="{% static 'style/base.less' %}">
+	{% endblock css %}
+
+	<!-- While all the scripts should be at the BOTTOM, this one is an
+	exception so the styles are rendered as the page loads. -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.3/less.min.js"></script>
+</head>
+<body>
+
+	<div id="header">
+	{% block header %}
+		<header>
+			<h1 id="logo"><a href="/">{{ config.SITE_NAME }}</a></h1>
+			{% block header_extra %}{% endblock header_extra %}
+		</header>
+	{% endblock header %}
+	</div>
+
+	<div id="middle">
+	{% block middle %}
+		<section id="sidebar">{% block sidebar %}{% endblock sidebar %}</section>
+		<section id="content">{% block content %}{% endblock content %}</section>
+	{% endblock middle %}
+	</div>
+
+	<div id="footer">
+	{% block footer %}
+		<footer>
+			<p id="copyright">{{ config.COPYRIGHT_NOTICE }}</p>
+			{% block footer_extra %}{% endblock footer_extra %}
+		</footer>
+	{% endblock footer %}
+	</div>
+
+	{% block js %}
+	<!-- 3rd party -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="//updateyourbrowser.net/asn.js"></script>
+	{% endblock js %}
+
+</body>
+</html>

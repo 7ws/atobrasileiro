@@ -1,0 +1,32 @@
+@import 'defs';
+
+
+#sidebar {
+	#main_nav ul {
+		font: 1.6em 'Trade Winds';
+		list-style: none;
+		margin: @GRID_GAP auto 0;
+
+		a {
+			padding: 0.5em;
+			display: block;
+
+		}
+		a.selected {
+			background: @COLOR4;
+			color: @COLOR1;
+			border-radius: 3px 0 0 3px;
+		}
+	}
+}
+
+#content {
+	background: @COLOR1;
+	border-radius: 3px;
+	box-shadow: 0 0 6px @COLOR2;
+	color: @COLOR2;
+	font: 1.6em 'Gentium Book Basic' serif;
+	line-height: 1.5em;
+	min-height: 20em;
+	padding: @GRID_GAP;
+}

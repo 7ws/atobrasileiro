@@ -1,0 +1,41 @@
+{% extends 'site_base.html' %}
+{% load flatpages %}
+{% load static %}
+
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet/less" href="{% static 'style/hotsite.less' %}">
+{% endblock css %}
+
+
+{% block sidebar %}
+	{% get_flatpages as flatpages %}
+
+	<nav id="main_nav"><ul>
+	{% for page in flatpages %}
+		<li><a href="#{{ page.title|slugify }}">{{ page.title }}</a></li>
+	{% endfor %}
+	</ul></nav>
+{% endblock sidebar %}
+
+
+{% block content %}
+	{% get_flatpages as flatpages %}
+
+	{% for page in flatpages %}
+	{% with page.title|slugify as page_id %}
+		<section id="{{ page_id }}">
+			<a name="{{ page_id }}"></a>
+			<div>{{ page.content }}</div>
+		</section>
+	{% endwith %}
+	{% endfor %}
+{% endblock content %}
+
+
+{% block js %}
+	{{ block.super }}
+
+	<script src="{% static 'js/hotsite.js' %}"></script>
+{% endblock js %}

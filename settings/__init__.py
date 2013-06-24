@@ -66,11 +66,6 @@ TEMPLATE_CONTEXT_PROCESSORS += (
     'constance.context_processors.config',
 )
 
-# Middlewares
-MIDDLEWARE_CLASSES += (
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-)
-
 # Deploy
 WSGI_APPLICATION = 'wsgi.application'
 
@@ -90,6 +85,7 @@ INSTALLED_APPS = (
     'constance.backends.database',
 
     # Local apps
+    'hotsite',
 )
 
 LOGGING = {

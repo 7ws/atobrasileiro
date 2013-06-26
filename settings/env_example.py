@@ -25,6 +25,9 @@ CONSTANCE_CONFIG = {
     'EMAIL_HOST_PASSWORD': ('', 'SMTP host password'),
     'EMAIL_PORT': (587, 'SMTP connection port'),
     'EMAIL_USE_TLS': (True, 'SMTP uses TLS for connection'),
+
+    # 3rd party
+    'FACEBOOK_APP_ID': ('', 'Facebook App ID'),
 }
 
 DATABASES = {

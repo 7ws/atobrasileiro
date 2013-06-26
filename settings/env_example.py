@@ -16,6 +16,7 @@ MANAGERS = ADMINS = (
 CONSTANCE_CONFIG = {
     # Site info
     'SITE_NAME': (u'Site Name', 'Site name'),
+    'SITE_DESCRIPTION': (u'', 'A short site description; will appear on indexers.'),
     'SITE_URL': (u'http://siteurl.com', 'Main site address'),
     'COPYRIGHT_NOTICE': ('', 'Copyright notice'),
 

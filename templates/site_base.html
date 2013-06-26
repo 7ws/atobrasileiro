@@ -6,6 +6,16 @@
 <head>
 	<meta charset="utf-8">
 
+	{% if config.FACEBOOK_APP_ID %}
+	<!-- Open Graph info -->
+	<meta property="fb:app_id" content="{{ config.FACEBOOK_APP_ID }}">
+	<meta property="og:description" content="{{ config.SITE_DESCRIPTION }}">
+	<meta property="og:image" content="{{ config.SITE_URL }}{% static 'img/sq_logo.png' %}">
+	<meta property="og:locale" content="pt_BR">
+	<meta property="og:title" content="{{ config.SITE_NAME }}">
+	<meta property="og:url" content="{{ config.SITE_URL }}">
+	{% endif %}
+
 	<title>{{ config.SITE_NAME }}</title>
 
 	{% block css %}

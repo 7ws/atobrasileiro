@@ -1,6 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic);
-@import url(http://fonts.googleapis.com/css?family=Telex);
-@import url(http://fonts.googleapis.com/css?family=Trade+Winds);
+@import url(http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic|PT+Sans+Caption:700,400|Trade+Winds);
 @import 'defs';
 
 
@@ -13,7 +11,7 @@
 
 html {
 	background: @COLOR7;
-	font: 12px "Lato", sans-serif;
+	font: 12px "PT Sans Caption", sans-serif;
 }
 
 a {
@@ -32,9 +30,6 @@ button:focus { text-decoration: underline !important }  // visual help
 
 
 #header {
-	border: 2px dashed @COLOR7;
-	border-left: none;
-	border-right: none;
 	background: @COLOR4;
 	margin: 2em 0 4em 0;
 
@@ -48,23 +43,28 @@ button:focus { text-decoration: underline !important }  // visual help
 		padding: 0.25em 0;
 		position: relative;
 
-		a { color: @COLOR1 }
+		a {
+			color: @COLOR1;
 
-		&:after {
-			color: @COLOR7;
-			content: '\2605';
-			font-size: 3.8em;
-			margin-top: -0.46em;
-			position: absolute;
-			right: 0;
-			transform: rotate(15deg);
+			&:after {
+				color: @COLOR7;
+				content: '\2605';
+				font-size: 3.8em;
+				position: absolute;
+				right: 0;
+				top: -0.4em;
+				transform: rotate(15deg);
+				transition: 0.25s;
+			}
+
+			&:hover:after {
+				text-shadow: 0 0 8px @COLOR2;
+				font-size: 4.2em;
+				right: -0.05em;
+				top: -0.45em;
+			}
 		}
 	}
-}
-
-#middle { #layout > .double;
-	margin: 0 auto 4em;
-	width: @MAIN_WIDTH;
 }
 
 #footer {

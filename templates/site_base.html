@@ -12,9 +12,10 @@
 	<link rel="stylesheet/less" href="{% static 'style/base.less' %}">
 	{% endblock css %}
 
-	<!-- While all the scripts should be at the BOTTOM, this one is an
+	<!-- While all the scripts should be at the BOTTOM, these are an
 	exception so the styles are rendered as the page loads. -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.3/less.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
 <body>
 
@@ -45,7 +46,6 @@
 
 	{% block js %}
 	<!-- 3rd party -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src="//updateyourbrowser.net/asn.js"></script>
 	{% endblock js %}

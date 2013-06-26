@@ -1,33 +1,82 @@
 @import 'defs';
 
 
+#middle { #layout > .double;
+	margin: 0 auto 4em;
+	width: @MAIN_WIDTH;
+}
+
 #sidebar {
 	#main_nav ul {
-		font: 1.6em 'Trade Winds';
+		@item_height: 64px;
+
+		font-size: 2em;
+		font-weight: bold;
 		list-style: none;
 		margin: @GRID_GAP auto 0;
 
 		a {
 			display: block;
-			padding: 0.5em;
-			transition: 0.25s;
+			height: @item_height;
+			line-height: @item_height;
+			padding-left: @item_height * 0.75;
+			position: relative;
+			text-shadow: 1px 1px 0 @COLOR8;
 		}
 		a.selected {
 			background: @COLOR4;
+			background:
+				linear-gradient(120deg, lighten(@COLOR4, 15%), @COLOR4);
+			border: 1px solid @COLOR4;
 			border-radius: 3px 0 0 3px;
+			box-shadow: 5px 2px 5px @COLOR2;
 			color: @COLOR1;
-			text-align: right;
+			text-decoration: none;
+			text-shadow: -1px -1px 0 @COLOR3;
+
+			&:before {
+				content: '';
+				border: (@item_height / 2 + 2) solid transparent;
+				border-color: transparent transparent transparent @COLOR7;
+				left: -1px;
+				position: absolute;
+				top: -1px;
+				z-index: 1;
+			}
+
+			&:after {
+				content: '';
+				display: block;
+				background: @COLOR4;
+				background:
+					linear-gradient(90deg, @COLOR4, darken(@COLOR4, 5%));
+				border: 1px solid @COLOR4;
+				height: 100%;
+				width: 10px;
+				position: absolute;
+				right: -5px;
+				top: -1px;
+			}
 		}
 	}
 }
 
 #content {
-	background: @COLOR1;
-	border-radius: 3px;
-	box-shadow: 0 0 6px @COLOR2;
+	background: @COLOR1 url(img/brickwall.png);
+	border: 1px solid @COLOR1;
+	border-radius: 5px;
+	box-shadow: inset 0 0 6px @COLOR2;
 	color: @COLOR2;
-	font: 1.6em 'Gentium Book Basic' serif;
-	line-height: 1.5em;
+	font: 1.8em 'Gentium Book Basic' serif;
+	line-height: 1.8em;
 	min-height: 20em;
-	padding: @GRID_GAP;
+	padding: @GRID_GAP (@GRID_GAP * 2);
+	text-align: justify;
+
+	section :first-letter {
+		font-size: 3.5em;
+		float: left;
+		line-height: 1em;
+		padding-right: 0.1em;
+	}
 }

@@ -1,5 +1,6 @@
 {% extends 'site_base.html' %}
 {% load flatpages %}
+{% load markup %}
 {% load static %}
 
 
@@ -28,7 +29,7 @@
 	{% with page.title|slugify as page_id %}
 		<section id="{{ page_id }}">
 			<a name="{{ page_id }}"></a>
-			<div>{{ page.content }}</div>
+			<div>{{ page.content|markdown }}</div>
 		</section>
 	{% endwith %}
 	{% endfor %}

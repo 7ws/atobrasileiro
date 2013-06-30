@@ -13,25 +13,6 @@ MANAGERS = ADMINS = (
     (u'Developer Name', 'developer@email.com'),
 )
 
-CONSTANCE_CONFIG = {
-    # Site info
-    'SITE_NAME': (u'Site Name', 'Site name'),
-    'SITE_DESCRIPTION': (u'', 'A short site description; will appear on indexers.'),
-    'SITE_URL': (u'http://siteurl.com', 'Main site address'),
-    'COPYRIGHT_NOTICE': ('', 'Copyright notice'),
-
-    # Email settings
-    'EMAIL_HOST': ('smtp.gmail.com', 'SMTP connection host name'),
-    'EMAIL_HOST_USER': ('', 'SMTP host user name'),
-    'EMAIL_HOST_PASSWORD': ('', 'SMTP host password'),
-    'EMAIL_PORT': (587, 'SMTP connection port'),
-    'EMAIL_USE_TLS': (True, 'SMTP uses TLS for connection'),
-
-    # 3rd party
-    'FACEBOOK_APP_ID': ('', 'Facebook App ID'),
-    'FACEBOOK_GROUP_ID': ('', 'Facebook Group ID'),
-}
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.' + (

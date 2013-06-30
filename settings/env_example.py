@@ -29,6 +29,7 @@ CONSTANCE_CONFIG = {
 
     # 3rd party
     'FACEBOOK_APP_ID': ('', 'Facebook App ID'),
+    'FACEBOOK_GROUP_ID': ('', 'Facebook Group ID'),
 }
 
 DATABASES = {

@@ -16,6 +16,7 @@
 	{% for page in flatpages %}
 		<li><a href="#{{ page.title|slugify }}">{{ page.title }}</a></li>
 	{% endfor %}
+		<li><a href="#agenda">Agenda</a></li>
 	</ul></nav>
 {% endblock sidebar %}
 
@@ -31,6 +32,14 @@
 		</section>
 	{% endwith %}
 	{% endfor %}
+		<section id="agenda">
+			<a name="agenda"></a>
+			<div>
+				<p>Acesse o nosso
+					<a href="https://www.facebook.com/groups/{{ config.FACEBOOK_GROUP_ID }}/">grupo no Facebook</a>
+				para conferir a programação e interagir.</p>
+			</div>
+		</section>
 {% endblock content %}
 
 

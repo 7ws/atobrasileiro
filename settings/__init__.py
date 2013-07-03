@@ -120,9 +120,14 @@ CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_CONFIG = {
     # Site info
     'SITE_NAME': (u'Site Name', 'Site name'),
+    'SITE_DOMAIN': ('siteurl.com', 'Site domain'),
     'SITE_DESCRIPTION': (u'', 'A short site description; will appear on indexers.'),
     'SITE_URL': (u'http://siteurl.com', 'Main site address'),
     'COPYRIGHT_NOTICE': ('', 'Copyright notice'),
+
+    # Google Analytics
+    'GA_CODE': ('', 'Google Analytics tracking code'),
+    'GA_DOMAIN': ('', 'Google Analytics custom site domain'),
 
     # Email settings
     'EMAIL_HOST': ('smtp.gmail.com', 'SMTP connection host name'),

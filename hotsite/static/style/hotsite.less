@@ -67,13 +67,15 @@
 	border-radius: 5px;
 	box-shadow: inset 0 0 6px @COLOR2;
 	color: @COLOR2;
-	font: 1.8em 'Gentium Book Basic' serif;
+	font: 1.6em 'Gentium Book Basic' serif;
 	line-height: 1.8em;
 	min-height: 20em;
 	padding: @GRID_GAP (@GRID_GAP * 2);
 	text-align: justify;
 
-	section :first-letter {
+	section { p, li { margin-bottom: 1em }}
+
+	section p:first-letter {
 		font-size: 3.5em;
 		float: left;
 		line-height: 1em;
